@@ -1,7 +1,7 @@
 #include "account.h"
 
 int main(void){
-	Account p;
+	Account a;
 	int index;
 	int count;
 	while(1){
