@@ -7,9 +7,9 @@ int main(void){
 	while(1){
 		menu=selectMenu();
 		if(menu==1){
-			addAccount(p,count);
+			addAccount(a,count);
 		}else if(menu==2){
-			deleteAccount(p,count);
+			deleteAccount(a,count);
 		}else if(menu==0){
 			printf("장비를 정지합니다");
 			break;
