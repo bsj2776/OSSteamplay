@@ -1,11 +1,10 @@
 #include "account.h"
-#include <stdio.h>
-#include <string.h>
 
 int main(void){
 	Account a;
 	int index;
 	int count;
+  int menu;
 	while(1){
 		menu=selectMenu();
 		if(menu==1){
@@ -22,4 +21,3 @@ int main(void){
 			break;
 		}
 	}
-}
