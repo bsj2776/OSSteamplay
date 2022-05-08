@@ -1,4 +1,6 @@
 #include "account.h"
+#include <stdio.h>
+#include <string.h>
 
 int main(void){
 	Account a;
@@ -10,7 +12,12 @@ int main(void){
 			addAccount(&a,count);
 		}else if(menu==2){
 			deleteAccount(&a,count);
-		}else if(menu==0){
+		}else if(menu==3){
+			updateAccount(&a);
+		}else if(menu==4){
+			readAccount(&a);
+		}
+		else if(menu==0){
 			printf("장비를 정지합니다");
 			break;
 		}
