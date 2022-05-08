@@ -6,12 +6,12 @@ typedef struct{
 	int date;//날짜를 받음
 	int income;//들어온 금액
 	int outcome;//나간금액
-	char reason[100]//이유 등을 표기함
+	char reason[100];//이유 등을 표기함
 }Account;
 
 int addAccount(Account *a,int count);//리턴값은 갯수임
 int deleteAccount(Account *a,int count);//리턴값은 갯수임
-void readAccount(Account a);
+void readAccount(Account *a,int count);
 void listAccount(Account *a, int count);
 int updateAccount(Account *a);
 
