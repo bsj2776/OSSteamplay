@@ -1,24 +1,23 @@
-#include"account.c"
+#include "account.h"
 
 int main(void){
-    Account a;
-    int index=0;
-    int count=0;
-    int menu;
-    while(1){
-        menu=selectMenu();
-        if(menu==0){
-        break;
-        }else if(menu==1){
-                count+=addAccount(&a,count);
-        }else if (menu==2){
-                deleteAccount(&a,count);
-        }else if (menu==3){
-
-        }else if (menu==4){
-		readAccount(&a,count);
+	Account a;
+	int index;
+	int count;
+  int menu;
+	while(1){
+		menu=selectMenu();
+		if(menu==1){
+			count += addAccount(&a,count);
+		}else if(menu==2){
+			deleteAccount(&a,count);
+		}else if(menu==3){
+			updateAccount(&a);
+		}else if(menu==4){
+			readAccount(&a);
+		}
+		else if(menu==0){
+			printf("장비를 정지합니다");
+			break;
+		}
 	}
-    }
-    printf("종료됨!\n");
-    return 0;
-}
