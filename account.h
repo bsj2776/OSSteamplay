@@ -11,7 +11,7 @@ typedef struct{
 
 int addAccount(Account *a,int count);//리턴값은 갯수임
 int deleteAccount(Account *a,int count);//리턴값은 갯수임
-void readAccount(Account *a,int count);
+void readAccount(Account a);
 void listAccount(Account *a, int count);
 int updateAccount(Account *a);
 
