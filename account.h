@@ -1,4 +1,4 @@
-i#include<stdio.h>
+#include<stdio.h>
 
 typedef struct{
 	int year;//년도를 받음
