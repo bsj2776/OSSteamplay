@@ -44,6 +44,7 @@ int addAccount(Account *a,int count){
 }
 
 int deleteAccount(Account *a,int count){
+	int check=0;
 	int month, date;
     int doubleCheck;
     readAccount(a,count);//일단 목록을 불러와요
@@ -53,6 +54,7 @@ int deleteAccount(Account *a,int count){
 	printf("몇일인가요(취소 :0)? ");
 	scanf("%d",&date);
     if(month==0||date==0){
+		printf("취소하셨습니다. \n");
 		return 0;
     }else{
     	printf("정말로 삭제합니까? (삭제:1) ");
@@ -61,13 +63,17 @@ int deleteAccount(Account *a,int count){
 			for(int i=0;i<count;i++){
 				if(a[i].date==date&&a[i].month==month){
 					a[i].date=-1;
+					printf("=> 삭제됨! \n");
+					check=1;
+					break;
 				}else{
 					printf("찾는중입니다. \n");
 				}
-				printf("=> 삭제됨! \n");
-				break;
 			}
-			return 1;
+			if(check==0){
+				printf("해당 내역을 찾지 못했습니다. \n");
+			}
+			return 0;
 			}else{
 				printf("취소하셨습니다.\n");
             	return 0;
