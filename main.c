@@ -12,7 +12,7 @@ int main(void){
 		}else if(menu==2){
 			deleteAccount(a,count);//가계부 삭제
 		}else if(menu==3){
-			updateAccount(a);//수정
+			updateAccount(a,count);//수정
 		}else if(menu==4){
 			readAccount(a,count);//읽어오기
 		}

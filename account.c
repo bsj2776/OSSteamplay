@@ -19,9 +19,9 @@ int addAccount(Account *a,int count){
 	int check;
 	char reason[100];
 	char dummy[10];
-	printf("몇년도 가계부인가요?\n");
+	printf("몇년도 가계부인가요? ");
 	scanf("%d",&a[count].year);
-	printf("몇월달 가계부인가요?\n");
+	printf("몇월달 가계부인가요? ");
 	scanf("%d",&a[count].month);
 	printf("날짜는? ");
 	scanf("%d",&a[count].date);
@@ -61,12 +61,15 @@ int deleteAccount(Account *a,int count){
 			for(int i=0;i<count;i++){
 				if(a[i].date==date&&a[i].month==month){
 					a[i].date=-1;
+				}else{
+					printf("찾는중입니다. \n");
 				}
 				printf("=> 삭제됨! \n");
-				return 1;
+				break;
 			}
+			return 1;
 			}else{
-            		printf("취소하셨습니다.\n");
+				printf("취소하셨습니다.\n");
             	return 0;
         	}
     	}
@@ -90,6 +93,54 @@ void readAccount(Account *a,int count){
     printf("\n");
 }
 
-int updateAccount(Account *a){
-	
+int updateAccount(Account *a,int count){
+	int check=0;
+	int month, date;
+    int doubleCheck;
+	char reason[100];
+	char dummy[10];
+    readAccount(a,count);//일단 목록을 불러와요
+    printf("\n");
+    printf("몇월인가요(취소 :0)? ");
+    scanf("%d",&month);
+	printf("몇일인가요(취소 :0)? ");
+	scanf("%d",&date);
+    if(month==0||date==0){
+		printf("취소하셨습니다.\n");
+        return 0;
+    }else{
+		for(int i;i<count;i++){
+			if(a[i].date==date&&a[i].month==month){
+				printf("년도를 입력하세요. ");
+				scanf("%d", &a[i].year);
+				printf("월을 입력하세요. ");
+				scanf("%d", &a[i].month);
+				printf("일을 입력하세요. ");
+				scanf("%d", &a[i].date);
+				printf("수입을 입력하세요. ");
+				scanf("%d", &a[i].income);
+				printf("지출을 입력하세요. ");
+				scanf("%d", &a[i].outcome);
+				fgets(dummy,10,stdin);
+				printf("내역을 입력하세요 ");
+				fgets(reason,100,stdin);
+				for(int i=0;i<100;i++){
+					if(reason[i]=='\n'){
+						reason[i]='\0';
+						}
+						break;
+				}
+				strcpy(a[i].reason,reason);
+				printf("수정완료!\n");
+				check=1;
+				break;
+			}
+		}
+		if(check==1){
+			return 0;
+		}else{
+			printf("입력된 것이 없었습니다. \n");
+			return 0;
+		}
+    }
 }

@@ -13,6 +13,6 @@ int addAccount(Account *a,int count);//리턴값은 갯수임
 int deleteAccount(Account *a,int count);//리턴값은 갯수임
 void readAccount(Account *a, int count);
 void listAccount(Account *a, int count);
-int updateAccount(Account *a);
+int updateAccount(Account *a, int count);
 
 int selectMenu();//어떤 기능을 선택할지 받음.
