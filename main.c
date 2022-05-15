@@ -1,4 +1,4 @@
-#include "account.c"
+#include "account.h"
 
 int main(void){
 	Account a[100];
