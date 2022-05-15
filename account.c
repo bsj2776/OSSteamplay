@@ -5,9 +5,14 @@ int selectMenu(){
 	int menu;
 	printf("\n 가계부 가계부 가계부! \n\n");
 	printf("1. 가계부 쓰기\n");
-	printf("2. 가계부 지우기\n");
+	printf("2. 가계부 삭제(날짜)\n");
 	printf("3. 가계부 수정\n");
 	printf("4. 가계부 읽기\n");
+	printf("5. 가계부 저장\n");
+	printf("6. 가계부 삭제(달)\n");
+	printf("7. 가계부 날짜 검색\n");
+	printf("8. 가계부 최대 지출 검색\n");
+	printf("9. 수익내역과 총 지출액 검색\n");
 	printf("0. 정지하기\n");
 	printf("원하는 메뉴를 입력하세요. =>");
 	scanf("%d",&menu);
