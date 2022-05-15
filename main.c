@@ -1,4 +1,6 @@
-#include "account.h"
+#include "account.c"
+#include<stdio.h>
+#include <string.h>
 
 int main(void){
 	Account a[100];
@@ -26,9 +28,9 @@ int main(void){
 			//total = deleteMonth(a, count);
 			//count = count - total;
 		}else if(menu==7){
-			//searchDate(a, count);
+			searchDate(a, count);
 		}else if(menu==8){
-			//searchPayment(a, count);
+			searchPayment(a, count);
 		}else if(menu==9){
 			//searchTotalPay(a, count);
 		}

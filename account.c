@@ -1,4 +1,5 @@
 #include"account.h"
+#include<stdio.h>
 #include <string.h>
 
 int selectMenu(){
@@ -41,7 +42,7 @@ int addAccount(Account *a,int count){
 	strcpy(a[count].reason,reason);
 	printf("수입은? ");
 	scanf("%d",&a[count].income);
-	printf("지출은? ");
+	printf("지출은?(음수로 입력) ");
 	scanf("%d",&a[count].outcome);
 	printf("완료했습니다.\n");
 	return 1;
@@ -85,8 +86,15 @@ int deleteAccount(Account *a,int count){
     	}
 }
 
+void printAccount(Account a){
+	printf("\nyear month date income outcome reason\n");
+	printf("\n------------------------------------------\n");
+	printf("%d %4d %4d %4d %8d %s\n", a.year, a.month, a.date, a.income, a.outcome, a.reason);
+
+}
+
 void readAccount(Account *a,int count){
-    printf("\n******************\n");
+    printf("\n*******************************\n");
     for(int i=0;i<count;i++){
         if(a[i].date==-1){
             continue;
@@ -130,7 +138,7 @@ int updateAccount(Account *a,int count){
 				scanf("%d", &a[i].date);
 				printf("수입을 입력하세요. ");
 				scanf("%d", &a[i].income);
-				printf("지출을 입력하세요. ");
+				printf("지출을 입력하세요. (음수로 입력)");
 				scanf("%d", &a[i].outcome);
 				fgets(dummy,10,stdin);
 				printf("내역을 입력하세요 ");
@@ -197,4 +205,50 @@ int loadData(Account *a){
 		i=i-1;
 		return i;
 	}
+}
+
+void searchDate(Account *a, int count){
+	int scnt = 0; //검색된 데이터의 수를 count
+	int year;
+	int month;
+	int date;
+
+	printf("검색할 날의 년도? ");
+	scanf("%d", &year);
+	printf("검색할 날의 달? ");
+	scanf("%d", &month);
+	printf("검색할 날의 일? ");
+	scanf("%d", &date);
+
+	for(int i = 0; i < count; i++){
+		if(a[i].date == -1)
+			continue;
+		if(a[i].year == year && a[i].month == month && a[i].date == date){
+			printAccount(a[i]);
+			scnt++;
+		}
+	}
+	if(scnt == 0){
+		printf("검색된 데이터가 없습니다!\n");
+	}
+	printf("\n총 %d개의 data가 검색되었습니다\n", scnt);
+
+}
+
+void searchPayment(Account *a, int count){
+	int base_payment;
+	int final;
+	
+	base_payment = a[0].outcome;
+	final = 0;
+	for(int i = 0; i < count; i++){
+		if(a[i].date == -1)
+			continue;
+		if(base_payment > a[i].outcome){ //지출을 음수로 받아오기 때문에 나온 비교
+			base_payment = a[i].outcome;
+			final = i;
+		}
+	}
+	printf("\n이번달에 가장 큰 지출은 %d %d %d 날에 지출한 %d 입니다.\n", 
+		a[final].year, a[final].month, a[final].date, base_payment);
 }
