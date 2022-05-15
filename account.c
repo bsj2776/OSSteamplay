@@ -20,7 +20,6 @@ int selectMenu(){
 }
 
 int addAccount(Account *a,int count){
-	FILE *fp;
 	int check;
 	char reason[100];
 	char dummy[10];
@@ -99,6 +98,7 @@ void readAccount(Account *a,int count){
             printf(" %d",a[i].income);
             printf(" %d ",a[i].outcome);
             printf(" %s",a[i].reason);
+			printf("\n");
         }
     }
     printf("\n");
@@ -154,4 +154,47 @@ int updateAccount(Account *a,int count){
 			return 0;
 		}
     }
+}
+void saveData(Account *a, int count){
+    FILE *fp;
+    fp=fopen("account.txt","wt");
+    for(int i=0;i<count;i++){
+        if(a[i].date==-1){
+            continue;
+        }else{
+            fprintf(fp,"%d %d %d %d %d %s\n",a[i].year,a[i].month,a[i].date,a[i].income,a[i].outcome,a[i].reason);
+        }
+    }
+    fclose(fp);
+    printf("=> 저장됨! \n");
+}
+
+int loadData(Account *a){
+    int count=0, i=0;
+    FILE *fp;
+    fp=fopen("account.txt","rt");
+    if(fp==NULL){
+        printf("\n=> 파일 없음\n");
+    }else{
+        for(i=0;i<100;i++){
+            if(feof(fp)){
+                break;
+            }else{
+                fscanf(fp,"%d",&a[i].year);
+                fscanf(fp,"%d",&a[i].month);
+                fscanf(fp,"%d",&a[i].date);
+                fscanf(fp,"%d",&a[i].income);
+                fscanf(fp,"%d",&a[i].outcome);
+                fscanf(fp,"%s",a[i].reason);
+            }
+        }
+        fclose(fp);
+        printf("\n=> 로딩 성공!\n");
+    }
+	if(i==0){
+		return i;
+	}else{
+		i=i-1;
+		return i;
+	}
 }
