@@ -14,6 +14,7 @@ int main(void){
 			count += addAccount(a,count);//가계부 생성
 		}else if(menu==2){
 			deleteAccount(a,count);//가계부 삭제
+			count--;
 		}else if(menu==3){
 			updateAccount(a,count);//수정
 		}else if(menu==4){
@@ -21,7 +22,9 @@ int main(void){
 		}else if(menu==5){
 			saveData(a, count);
 		}else if(menu==6){
-			deleteMonth(a, count);
+			int total;
+			total = deleteMonth(a, count);
+			count = count - total;
 		}else if(menu==7){
 			searchDate(a, count);
 		}else if(menu==8){
