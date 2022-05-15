@@ -252,3 +252,49 @@ void searchPayment(Account *a, int count){
 	printf("\n이번달에 가장 큰 지출은 %d %d %d 날에 지출한 %d 입니다.\n", 
 		a[final].year, a[final].month, a[final].date, base_payment);
 }
+
+void searchTotalPay(Account *a, int count){
+	int outcomesum = 0;
+	int incomesum = 0;
+
+	for(int i = 0; i < count; i++){
+		if(a[i].date == -1)
+			continue;
+		outcomesum += a[i].outcome;
+		incomesum += a[i].income;
+	}
+	printf("\n이때까지의 총 수익은 %d 총 지출은 %d 입니다.\n",incomesum ,outcomesum);
+}
+
+int deleteMonth(Account *a, int count){
+	int check=0;
+	int month;
+    int doubleCheck;
+    readAccount(a,count);//일단 목록을 불러와요
+    printf("\n");
+    printf("몇월인가요(취소 :0)? ");
+    scanf("%d",&month);
+    if(month==0){
+		printf("취소하셨습니다. \n");
+		return 0;
+    }else{
+    	printf("정말로 삭제합니까? (삭제:1) ");
+    	scanf("%d",&doubleCheck);
+    	if(doubleCheck==1){
+			for(int i=0; i<count; i++){
+				if(a[i].month==month){
+					a[i].date=-1;
+					check++;
+				}
+			}
+			printf("=> 삭제됨! \n");
+			if(check==0){
+				printf("해당 내역을 찾지 못했습니다. \n");
+			}
+			return check;
+		}else{
+			printf("취소하셨습니다.\n");
+            return 0;
+        }
+    }
+}

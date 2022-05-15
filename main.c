@@ -24,15 +24,15 @@ int main(void){
 		}else if(menu==5){
 			saveData(a, count);
 		}else if(menu==6){
-			//int total;
-			//total = deleteMonth(a, count);
-			//count = count - total;
+			int total;
+			total = deleteMonth(a, count);
+			count = count - total;
 		}else if(menu==7){
 			searchDate(a, count);
 		}else if(menu==8){
 			searchPayment(a, count);
 		}else if(menu==9){
-			//searchTotalPay(a, count);
+			searchTotalPay(a, count);
 		}
 		else if(menu==0){
 			printf("장비를 정지합니다");
