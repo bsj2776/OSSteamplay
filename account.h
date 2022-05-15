@@ -14,5 +14,18 @@ int deleteAccount(Account *a,int count);//리턴값은 갯수임
 void readAccount(Account *a, int count);
 void listAccount(Account *a, int count);
 int updateAccount(Account *a, int count);
+//원하는 달 모두 삭제
+int deleteMonth(Account *a, int count);
+//파일쓰기(SaveFile)
+void saveData(Account *a, int count);
+//파일읽기(LoadFile)
+int loadData(Account *a);
+//입력한 날짜 검색
+void searchDate(Account *a, int count);
+//가장높은 지출내역 검색
+void searchPayment(Account *a, int count);
+//현재 수익내역과 총 지출액 검색
+void searchTotalPay(Account *a, int count);
 
 int selectMenu();//어떤 기능을 선택할지 받음.
+

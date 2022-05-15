@@ -2,3 +2,4 @@ a.exe
 main
 account.h.gch
 account.o
+*.txt
